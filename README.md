@@ -39,3 +39,7 @@ npm run preview  # serve the production build
 ## Stack
 
 TypeScript, Vite, Canvas API, Web Workers, CSS and Vitest. There are no runtime dependencies.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
