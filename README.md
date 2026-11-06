@@ -1,5 +1,7 @@
 # Pixel Palette
 
+**Live site:** https://siva-geddada.github.io/pixel-palette/
+
 Turn any image into a colour palette, and see which colours are readable together.
 
 Drop in an image and Pixel Palette finds its main colours with k-means clustering, then scores every text and background pairing against WCAG contrast rules.
@@ -35,6 +37,40 @@ npm run preview  # serve the production build
 ```
 
 `dist/` is a static site that any static host can serve.
+
+## Publish changes to GitHub Pages
+
+Publishing is manual: pushing to `main` saves your code but does **not** update the live site.
+
+**You need:** Git, Node.js, and the [GitHub CLI](https://cli.github.com/) logged in with `gh auth login`.
+
+**After every change:**
+
+1. Try it locally:
+
+   ```bash
+   npm run dev
+   ```
+
+2. Save your code to `main`:
+
+   ```bash
+   git add -A
+   git commit -m "Describe your change"
+   git push
+   ```
+
+3. Publish it:
+
+   ```bash
+   npm run deploy
+   ```
+
+4. Wait about a minute, then refresh https://siva-geddada.github.io/pixel-palette/. Use `Ctrl + F5` if you still see the old version.
+
+`npm run deploy` runs the tests, builds the app and pushes `dist/` to the `gh-pages` branch, which GitHub Pages serves. If a test fails, it stops and the live site stays as it is.
+
+**If the site doesn't update:** check for errors under the repo's **Actions** tab, and confirm that **Settings → Pages** shows the `gh-pages` branch. Don't edit `gh-pages` by hand, because each publish replaces it.
 
 ## Stack
 
