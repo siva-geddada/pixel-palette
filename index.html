@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; script-src &#39;self&#39;; style-src &#39;self&#39;; img-src &#39;self&#39; blob: data:; worker-src &#39;self&#39;; connect-src &#39;none&#39;; base-uri &#39;none&#39;; form-action &#39;none&#39;">
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pixel Palette: accessible colours from any image</title>
+    <meta
+      name="description"
+      content="Drop in an image to extract its main colours and check every pairing against WCAG contrast rules. Runs fully in your browser."
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='8' height='8' fill='%23ff5c8a'/%3E%3Crect x='8' width='8' height='8' fill='%23ffe500'/%3E%3Crect y='8' width='8' height='8' fill='%234d7cff'/%3E%3Crect x='8' y='8' width='8' height='8' fill='%232fd67b'/%3E%3C/svg%3E"
+    />
+    <script type="module" crossorigin src="./assets/index-CYPnlOIf.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Ct6ncipc.css">
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <h1>Pixel Palette</h1>
+        <p class="lede">
+          Turn any image into a colour palette, and see which colours are readable together.
+        </p>
+      </div>
+    </header>
+
+    <main class="wrap">
+      <section class="upload" aria-label="Choose an image">
+        <label class="dropzone" id="dropzone" for="file">
+          <input id="file" type="file" accept="image/*" />
+          <strong>Drop an image here</strong>
+          <span>or click to choose one. You can also paste from your clipboard.</span>
+        </label>
+        <button class="button" id="sample" type="button">Try a sample image</button>
+        <p class="note">Your image stays on this device. Nothing is uploaded.</p>
+        <p class="error" id="error" role="alert" hidden></p>
+      </section>
+
+      <div id="results" hidden>
+        <section class="panel source" aria-label="Your image">
+          <img id="preview" alt="The image you chose" />
+          <div class="controls">
+            <label for="size">Colours: <output id="size-value" for="size">6</output></label>
+            <input id="size" type="range" min="2" max="10" value="6" />
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="palette-title">
+          <h2 id="palette-title">Palette</h2>
+          <p class="hint" id="palette-hint" aria-live="polite">Click a colour to copy it.</p>
+          <ul class="swatches" id="swatches"></ul>
+        </section>
+
+        <section class="panel" aria-labelledby="pairs-title">
+          <h2 id="pairs-title">Contrast check</h2>
+          <p class="hint" id="summary"></p>
+          <div class="legend">
+            <span class="badge pass">AAA 7:1</span>
+            <span class="badge pass">AA 4.5:1</span>
+            <span class="badge large">AA Large 3:1</span>
+            <span class="badge fail">Fail</span>
+          </div>
+          <div class="table-scroll" tabindex="0" role="region" aria-labelledby="pairs-title">
+            <table id="matrix"></table>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="css-title">
+          <h2 id="css-title">CSS variables</h2>
+          <pre id="css"></pre>
+          <button class="button" id="copy-css" type="button">Copy CSS</button>
+        </section>
+      </div>
+    </main>
+
+  </body>
+</html>
